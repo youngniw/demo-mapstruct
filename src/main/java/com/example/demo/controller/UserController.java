@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class UserController {
@@ -24,8 +26,8 @@ public class UserController {
     }
 
     @GetMapping("/user/list")
-    public ResponseEntity<UserDataDto> getUserList() {
-        UserDataDto userList = userService.getUserList();
+    public ResponseEntity<List<UserDataDto>> getUserList() {
+        List<UserDataDto> userList = userService.getUserList();
 
         return new ResponseEntity<>(userList, HttpStatus.OK);
     }

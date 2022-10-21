@@ -27,9 +27,9 @@ public class UserService {
         return userMapper.toDto(saveUser);
     }
 
-    public UserDataDto getUserList() {
+    public List<UserDataDto> getUserList() {
         List<User> userList = userRepository.findAll();
 
-        return userDataMapper.toDto(userList).get(0);
+        return userDataMapper.toDto(userList);
     }
 }
