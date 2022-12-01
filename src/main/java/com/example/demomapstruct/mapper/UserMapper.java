@@ -12,7 +12,7 @@ public interface UserMapper extends EntityMapper<UserDto, User> {
     @Mapping(target = "loginPw", ignore = true)
     User toEntity(UserDto userDto);
 
-    @Mapping(target = "isCreatedToday", expression = "java(user.getCreatedDate().isAfter(java.time.LocalDateTime.of(java.time.LocalDate.now(), java.time.LocalTime.of(0, 0, 0))))")
+    @Mapping(target = "isCreatedToday", expression = "java(user.getCreatedDate().toLocalDate().isEqual(java.time.LocalDate.now()))")
     UserDto toDto(User user);
 
     @Named("partialUpdate")

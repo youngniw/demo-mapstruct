@@ -10,9 +10,8 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface PostMapper extends EntityMapper<PostDto, Post> {
 
-    @Mapping(source = "userEntity", target = "writer")
-    @Mapping(source = "postDto.createdDate", target = "createdDate")
-    Post toEntity(PostDto postDto, User userEntity);
+    @Mapping(target = "updatedDate", ignore = true)
+    Post toEntity(PostDto postDto);
     @Mapping(source = "userEntity", target = "writer")
     Post toEntity(SavePostDto postDto, User userEntity);
 

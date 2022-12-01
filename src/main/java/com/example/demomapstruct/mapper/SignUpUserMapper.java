@@ -25,7 +25,6 @@ public interface SignUpUserMapper extends EntityMapper<SaveUserDto, User> {
             return null;
         }
         return User.builder()
-
                 .uid(idx)
                 .build();
     }
