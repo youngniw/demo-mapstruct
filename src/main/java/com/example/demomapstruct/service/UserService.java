@@ -1,11 +1,11 @@
-package com.example.demo.service;
+package com.example.demomapstruct.service;
 
-import com.example.demo.dto.UserDataDto;
-import com.example.demo.dto.UserDto;
-import com.example.demo.entity.User;
-import com.example.demo.mapper.UserDataMapper;
-import com.example.demo.mapper.UserMapper;
-import com.example.demo.repository.UserRepository;
+import com.example.demomapstruct.dto.UserDataDto;
+import com.example.demomapstruct.dto.UserDto;
+import com.example.demomapstruct.entity.User;
+import com.example.demomapstruct.mapper.UserDataMapper;
+import com.example.demomapstruct.mapper.UserMapper;
+import com.example.demomapstruct.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

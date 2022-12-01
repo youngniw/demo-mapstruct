@@ -1,4 +1,4 @@
-package com.example.demo.mapper;
+package com.example.demomapstruct.mapper;
 
 import org.mapstruct.BeanMapping;
 import org.mapstruct.MappingTarget;

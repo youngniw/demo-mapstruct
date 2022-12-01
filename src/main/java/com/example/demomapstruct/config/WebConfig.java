@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package com.example.demomapstruct.config;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;

@@ -1,8 +1,8 @@
-package com.example.demo.controller;
+package com.example.demomapstruct.controller;
 
-import com.example.demo.dto.UserDataDto;
-import com.example.demo.dto.UserDto;
-import com.example.demo.service.UserService;
+import com.example.demomapstruct.dto.UserDataDto;
+import com.example.demomapstruct.dto.UserDto;
+import com.example.demomapstruct.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
