@@ -1,32 +1,31 @@
 package com.example.demomapstruct.mapper;
 
-import com.example.demomapstruct.dto.UserDto;
+import com.example.demomapstruct.dto.SaveUserDto;
 import com.example.demomapstruct.entity.User;
 import org.mapstruct.*;
 
 @Mapper(componentModel = "spring")
-public interface UserMapper extends EntityMapper<UserDto, User> {
+public interface SignUpUserMapper extends EntityMapper<SaveUserDto, User> {
+    @Mapping(target = "uid", ignore = true)
     @Mapping(target = "createdDate", ignore = true)
     @Mapping(target = "updatedDate", ignore = true)
-    @Mapping(target = "loginId", ignore = true)
-    @Mapping(target = "loginPw", ignore = true)
-    User toEntity(UserDto userDto);
+    User toEntity(SaveUserDto saveUserDto);
 
-    @Mapping(target = "isCreatedToday", expression = "java(user.getCreatedDate().isAfter(java.time.LocalDateTime.of(java.time.LocalDate.now(), java.time.LocalTime.of(0, 0, 0))))")
-    UserDto toDto(User user);
+    SaveUserDto toDto(User user);
 
     @Named("partialUpdate")
     @Mapping(target = "uid", ignore = true)
     @Mapping(target = "createdDate", ignore = true)
     @Mapping(target = "updatedDate", ignore = true)
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void partialUpdate(@MappingTarget User entity, UserDto userDto);
+    void partialUpdate(@MappingTarget User entity, SaveUserDto dto);
 
     default User fromIdx(Long idx) {
         if (idx == null) {
             return null;
         }
         return User.builder()
+
                 .uid(idx)
                 .build();
     }

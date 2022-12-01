@@ -1,17 +1,17 @@
 package com.example.demomapstruct.entity;
 
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
-@Entity
-@Builder
-@Getter
-@NoArgsConstructor
+@SuperBuilder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class User {
+@NoArgsConstructor
+@Getter
+@Table
+@Entity
+public class User extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long uid;
@@ -24,7 +24,4 @@ public class User {
 
     @Column
     private String loginPw;
-
-    @CreatedDate
-    private LocalDateTime createdDate;
 }

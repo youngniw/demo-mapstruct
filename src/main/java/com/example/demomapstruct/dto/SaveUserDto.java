@@ -6,8 +6,8 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class UserDto {
-    private Long uid;
+public class SaveUserDto {
     private String name;
-    private Boolean isCreatedToday;
+    private String loginId;
+    private String loginPw;
 }
