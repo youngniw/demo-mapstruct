@@ -1,5 +1,6 @@
 package com.example.demomapstruct.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -20,8 +21,10 @@ public class User extends BaseTimeEntity {
     private String name;
 
     @Column
+    @JsonIgnore
     private String loginId;
 
     @Column
+    @JsonIgnore
     private String loginPw;
 }
