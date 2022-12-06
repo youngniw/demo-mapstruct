@@ -20,7 +20,7 @@ public interface UserMapper extends EntityMapper<UserDto, User> {
     @Mapping(target = "createdDate", ignore = true)
     @Mapping(target = "updatedDate", ignore = true)
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void partialUpdate(@MappingTarget User entity, UserDto userDto);
+    void partialUpdate(@MappingTarget User entity, UserDto dto);
 
     default User fromIdx(Long idx) {
         if (idx == null) {
