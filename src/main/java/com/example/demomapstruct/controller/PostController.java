@@ -3,6 +3,7 @@ package com.example.demomapstruct.controller;
 import com.example.demomapstruct.dto.PostDto;
 import com.example.demomapstruct.dto.SavePostDto;
 import com.example.demomapstruct.dto.UpdatePostDto;
+import com.example.demomapstruct.entity.Post;
 import com.example.demomapstruct.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -10,7 +11,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,9 +48,13 @@ public class PostController {
     // 게시글 추가
     @PostMapping
     public ResponseEntity<Object> savePost(@RequestBody SavePostDto savePostDto) {
-        postService.savePost(savePostDto);
+        Post post = postService.savePost(savePostDto);
 
-        return ResponseEntity.ok(null);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{pid}")
+                .buildAndExpand(post.getPid())
+                .toUri();
+        return ResponseEntity.created(uri).build();
     }
 
     // 게시글 수정

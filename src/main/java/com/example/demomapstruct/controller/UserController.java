@@ -2,12 +2,15 @@ package com.example.demomapstruct.controller;
 
 import com.example.demomapstruct.dto.UserDto;
 import com.example.demomapstruct.dto.SaveUserDto;
+import com.example.demomapstruct.entity.User;
 import com.example.demomapstruct.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,9 +22,13 @@ public class UserController {
     // 회원 정보 추가
     @PostMapping("/signup")
     public ResponseEntity<Object> signup(@RequestBody SaveUserDto saveUserDto) {
-        userService.save(saveUserDto);
+        User user = userService.saveUser(saveUserDto);
 
-        return ResponseEntity.ok(null);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{pid}")
+                .buildAndExpand(user.getUid())
+                .toUri();
+        return ResponseEntity.created(uri).build();
     }
 
     // uid에 해당하는 회원 정보 조회

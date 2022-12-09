@@ -21,8 +21,15 @@ public class UserService {
     private final UserMapper userMapper;
 
     @Transactional
-    public void save(SaveUserDto saveUserDto) {
-        userRepository.save(signUpUserMapper.toEntity(saveUserDto));
+    public User saveUser(SaveUserDto saveUserDto) {
+        userRepository.findByLoginId(saveUserDto.getLoginId())
+                .ifPresent(user -> {
+                    throw new RuntimeException("이미 존재하는 아이디입니다.");
+                });
+
+        User user = signUpUserMapper.toEntity(saveUserDto);
+
+        return userRepository.save(user);
     }
 
     @Transactional(readOnly = true)

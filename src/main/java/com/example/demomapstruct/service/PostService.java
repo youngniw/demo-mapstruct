@@ -37,8 +37,10 @@ public class PostService {
     }
 
     @Transactional
-    public void savePost(SavePostDto postDto) {
-        postRepository.save(postMapper.toEntity(postDto, userMapper.fromIdx(postDto.getUid())));
+    public Post savePost(SavePostDto postDto) {
+        Post post = postMapper.toEntity(postDto, userMapper.fromIdx(postDto.getUid()));
+
+        return postRepository.save(post);
     }
 
     @Transactional
