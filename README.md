@@ -46,11 +46,15 @@
    - Post <-> PostDto
      - toEntity 메서드: updatedDate 컬럼을 제외하고 매핑
      - toDto 메서드: 작성자인 writer 의 생성일 createdDate와 수정일 updatedDate를 제외하고 매핑
-     - partialUpdate 메서드: Post 엔티티 클래스의 제목과 내용인 title과 content 필드만 Setter를 제공함으로써 제목과 내용만이 수정되게 함 
+     - partialUpdate 메서드: Post 엔티티 클래스의 제목과 내용인 title과 content 필드만 Setter를 제공함으로써 제목과 내용만이 수정되게 함
 
-     - Post <- SavePostDto
-       - toEntity 메서드: 게시글 추가 시 회원 번호, 제목, 내용 값만을 받아 엔티티로 매핑함<br/>
-       (회원 번호를 통해 생성한 User 인스턴스를 인수로 받아 엔티티의 writer 값에 연결)
+       *(참고로 partialUpdate를 위해 변경을 위한 target 필드의 Setter 메소드가 존재해야 함)*
 
-     - Post <- UpdatePostDto
-       - partialUpdate 메서드: Post 엔티티 클래스의 제목과 내용를 사용자가 수정한 값을 포함하는 UpdatePostDto의 값으로 매핑 및 수정
+   - Post <- SavePostDto
+     - toEntity 메서드: 게시글 추가 시 회원 번호, 제목, 내용 값만을 받아 엔티티로 매핑함<br/>
+     (회원 번호를 통해 생성한 User 인스턴스를 인수로 받아 엔티티의 writer 값에 연결)
+
+   - Post <- UpdatePostDto
+     - partialUpdate 메서드: Post 엔티티 클래스의 제목과 내용를 사용자가 수정한 값을 포함하는 UpdatePostDto의 값으로 매핑 및 수정
+
+       *(참고로 partialUpdate를 위해 변경을 위한 target 필드의 Setter 메소드가 존재해야 함)*
